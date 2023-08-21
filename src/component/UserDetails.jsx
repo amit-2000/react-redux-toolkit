@@ -1,14 +1,29 @@
 import React from "react";
 import { DeleteAllUser } from "./DeleteAllUser";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { FetchFakeData } from "../utils";
+import { adduser } from "./store/slices/UserSlice";
 
 const UserDetails = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state) => {
+    return state.users;
+  });
+  console.log(data);
+  const addUser = () => {
+    const name = FetchFakeData();
+    dispatch(adduser(name));
+  };
   return (
     <Wrapper>
       <div className="content">
         <div className="admin-table">
           <div className="admin-subtitle">List of User Details</div>
-          <button className="btn add-btn">Add New Users</button>
+          <button onClick={addUser} className="btn add-btn">
+            Add New Users
+          </button>
         </div>
         <ul>
           <li>Hi</li>
