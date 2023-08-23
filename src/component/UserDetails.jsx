@@ -10,6 +10,7 @@ const UserDetails = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => {
     return state.users;
+    // return state.users;
   });
   console.log(data);
   const addUser = () => {
